@@ -53,7 +53,7 @@ public class ToDo {
 	 * @param t item to add.
 	 * @return whether item was successfully added.
 	 */
-	boolean addItem(ToDo t) {
+	static boolean addItem(ToDo t) {
 		boolean temp;
 		try {
 			temp = list.add(t);

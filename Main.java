@@ -29,7 +29,9 @@ public class Main {
 			System.out.println("Select from the following: ");
 			System.out.println("(1) create new list");
 			System.out.println("(2) read from existing list");
-			System.out.println("(3) quit");
+			System.out.println("(3) modify old list");
+			System.out.println("(4) read old list");
+			System.out.println("(5) quit");
 			String hold = scan.next();
 			int i = readNumbers(hold);
 			check = handleInput(i);
@@ -58,11 +60,17 @@ public class Main {
 		case "3":
 			out = 3;
 			break;
+		case "four":
+		case "4":
+			out = 4;
+			break;
+		case "five":
+		case "5":
 		case "q":
 		case "quit":
 		case "exit":
 		case "escape":
-			out = 3;
+			out = 5;
 			break;
 		default:
 			out = -1;
@@ -87,6 +95,12 @@ public class Main {
 			option2();
 			break;
 		case 3:
+			option3();
+			break;
+		case 4:
+			option4();
+			break;
+		case 5:
 		default:
 			System.out.println("Exiting process");
 			check = false;
@@ -104,10 +118,21 @@ public class Main {
 		System.out.println("What is the name of your list?");
 		try {
 			String name = scan.nextLine();
-			// TODO
+			boolean repeat = true;
+			while (repeat) {
+				System.out.println("What would you like to add to your list? (Type \"quit\" to stop adding)");
+				String item = scan.nextLine();
+				if (item.toLowerCase().trim().equals("quit")) {
+					repeat = false;
+					break;
+				} else {
+					ToDo t = new ToDo(item);
+					ToDo.addItem(t);
+				}
+			}
 			ToDo.write(name);
 		} catch (Exception e) {
-			
+			System.out.println("Error writing to file.");
 		}
 		scan.close();
 	}
@@ -116,6 +141,20 @@ public class Main {
 	 * Operation to read ToDo list from existing file.
 	 */
 	private static void option2() {
+		// TODO
+	}
+	
+	/**
+	 * Modify existing list.
+	 */
+	private static void option3() {
+		// TODO
+	}
+	
+	/**
+	 * Read from existing list.
+	 */
+	private static void option4() {
 		// TODO
 	}
 	
